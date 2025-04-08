@@ -1,15 +1,15 @@
+
 <?php
-header('Content-Type: application/json');
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $email = $_POST['email'];
+    $password = $_POST['password'];
 
-$email = $_POST['email'] ?? '';
-$password = $_POST['password'] ?? '';
-
-$allowed_email = "zubair440430@gmail.com";
-$allowed_password = "zubair120";
-
-if ($email === $allowed_email && $password === $allowed_password) {
-    echo json_encode(["status" => "ok", "idClient" => 1]);
+    if ($email === 'zubair440430@gmail.com' && $password === 'zubair120') {
+        echo "Login successful!";
+    } else {
+        echo "Invalid email or password.";
+    }
 } else {
-    echo json_encode(["status" => "error", "message" => "Invalid Credentials"]);
+    echo "Invalid request.";
 }
 ?>
